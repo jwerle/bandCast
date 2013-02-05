@@ -1,0 +1,26 @@
+.navbar-inner {
+	color: red;
+	background-color: red;
+}
+
+.navbar{ 
+	color: red;
+	}
+
+.classone {
+	padding-left: 10px;
+	height: 590px;
+	border-top: solid grey 2px;
+	border-right: solid grey 2px;
+	margin: 5px;
+}
+
+.classtwo {
+	text-align: left
+}
+.archivestuff {
+	border: solid black 1px;
+	height: 200px;
+	margin: 0px;
+	top: 60px;
+}
