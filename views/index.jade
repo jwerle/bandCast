@@ -1,26 +1,27 @@
 .navbar.navbar-fixed-top
   .navbar-inner
     .containerone
-      a.brand(href="#")= title
+      a.brand(href="#home")= title
       .nav-collapse
         ul.nav
           li.active
-            a(href="home") Home
+            a(href="#home") Home
           li
             a(href="#artists") Artists
           li
             a(href="#users") Users
           li
-            a(href="archive") Archive
+            a(href="#archive") Archive
           li
             a(href="#shows") Shows
           li
-            a(href="#board") About  
+            a(href="#about") About  
 .containertwo
  .row
     .span3
     .span4.classone    
-      h2 Welcome to bandCast<br />
+      h2= title 
+      h2 Welcome to bandCast <br />
       h3 A better way to listen
     .span4.classtwo  
     .span1

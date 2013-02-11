@@ -41,6 +41,12 @@ express.compiler.compilers.less.compile = function(str, fn){
 // Routes
 
 app.get('/', routes.index);
+app.get('/index', routes.index);
+app.get('/archive', routes.index.index_post_handler);
+app.get('/home', routes.index.home);
+
+
+
 
 app.listen(9500, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

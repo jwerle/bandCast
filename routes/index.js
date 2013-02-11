@@ -3,19 +3,23 @@
  * GET home page.
  */
 
-exports.index = function(req, res){
+ exports.index = function(req, res){
   res.render('index', { title: 'bandCast' })
 };
 
 // handler for homepage
 exports.home = function(req, res) {
     // if user is not logged in, ask them to login
-    if (typeof req.session.username == 'undefined') res.render('home', { title: 'Ninja Store'});
+    if (typeof req.session.username == 'undefined') res.render('index', { title: 'No name'});
     // if user is logged in already, take them straight to the items list
-    else res.redirect('/items');
+    else res.redirect('home');
 };
 
-exports.home_post_handler = function(req, res) {
+exports.home = function(req, res) {
+    res.render('home', { title: 'home'})
+};
+
+exports.index_post_handler = function(req, res) {
     // if the username is not submitted, give it a default of "Anonymous"
     username = req.body.username || 'Anonymous';
     // store the username as a session variable
@@ -28,9 +32,6 @@ exports.home_post_handler = function(req, res) {
 var items = {
     SKN:{name:'Shuriken', price:100},
     ASK:{name:'Ashiko', price:690},
-    CGI:{name:'Chigiriki', price:250},
-    NGT:{name:'Naginata', price:900},
-    KTN:{name:'Katana', price:1000}
 };
 
 // handler for displaying the items
@@ -55,8 +56,8 @@ exports.item = function(req, res) {
 exports.page = function(req, res) {
     var name = req.query.name;
     var contents = {
-        about: 'Ninja Store sells the coolest ninja stuff in the world. Anyone shopping here is cool.',
-        contact: 'You can contact us at <address><strong>Ninja Store</strong>,<br>1, World Ninja Headquarters,<br>Ninja Avenue,<br>NIN80B7-JP,<br>Nihongo.</address>'
+        about: 'cool.',
+        contact: 'contact us at <address><strong>Ninja Store</strong>,<br>1,<br>Ninja Avenue,<br>NIN80B7-JP,<br>Nihongo.</address>'
     };
     res.render('page', { title: 'Ninja Store - ' + name, username: req.session.username, content:contents[name] });
 };
