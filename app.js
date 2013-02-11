@@ -17,6 +17,17 @@ app.configure(function(){
 app.use(express.compiler({ src : __dirname + '/public', enable: ['less']}));
   app.use(app.router);
   app.use(express.static(__dirname + '/public'));
+
+  // joe was here..
+  // session object isn't attached to request object, we need to use the 'use()' method
+  // hook to grab the request object, attach a session object, and call the 'next()' function
+  // to proceed with the callstack
+  app.use(function(req, res, next){
+    if (typeof req.session !== 'object') {
+      req.session = {};
+    }
+    next();
+  });
 });
 
 app.configure('development', function(){
@@ -45,7 +56,9 @@ app.get('/index', routes.index);
 app.get('/archive', routes.index.index_post_handler);
 app.get('/home', routes.index.home);
 
-
+// joe was here..
+// need to use method HTTP method 'POST'
+app.post('/', routes.index_post_handler);
 
 
 app.listen(9500, function(){
